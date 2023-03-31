@@ -1,8 +1,14 @@
 import { createStore } from 'vuex'
 
-export default createStore({
-    state: {
+interface State{
+    props?: boolean;
+    name: String;
+}
 
+export default createStore<State>({
+    state: {
+        props: undefined,
+        name: ''
     },
     mutations: {
 
