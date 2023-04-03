@@ -7,7 +7,11 @@ const actions: ActionTree<PlacesState, StateInterface> = {
     getInitialLocation({commit}) {
         // a line to prevent linter errors
         navigator.geolocation.getCurrentPosition(
-            ({coords}) => commit('setLngLat', coords),
+            ({coords}) => {
+                commit('setLngLat', {lng : coords.longitude, lat: coords.latitude}),
+                console.log(coords);
+                
+            },
             (err) =>{
                 console.log(err);
                 throw new Error('No geolocation:')
