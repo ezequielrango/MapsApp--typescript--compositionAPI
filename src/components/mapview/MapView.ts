@@ -1,5 +1,5 @@
 import { usePlacesStore } from "@/composables";
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 import mapboxgl from 'mapbox-gl';
  
 
@@ -12,9 +12,10 @@ export default defineComponent({
         const { userLocation, isUserlocationReady } = usePlacesStore()
        
         const initMap = () => {
-            if(!mapElement.value) throw new Error('Div Element no exist');
-            if(!userLocation.value) throw new Error('user lcocation no exist');
-
+            if ( !mapElement.value ) throw new Error('Div Element no exits');
+            if ( !userLocation.value ) throw new Error('user location no existe');
+      
+      
             const map = new mapboxgl.Map({
                 container: mapElement.value, // container ID
                 style: 'mapbox://styles/mapbox/streets-v12', // style URL
@@ -24,10 +25,15 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            if(isUserlocationReady) 
+            if(isUserlocationReady.value) 
                 return initMap();
             
-        })
+        });
+
+        watch( isUserlocationReady, (newVal) => {
+            if(isUserlocationReady) 
+            return initMap();
+            })
         return{
 
             isUserlocationReady,
