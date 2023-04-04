@@ -5,7 +5,7 @@
                 <li class="list-group-item list-group-item-action">item
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio provident </p>
                     <div>
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-outline-primary btn-sm">
                             Direcciones
                         </button>
                     </div>
@@ -13,7 +13,7 @@
                 <li class="list-group-item list-group-item-action">item
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio provident </p>
                     <div>
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-outline-primary btn-sm">
                             Direcciones
                         </button>
                     </div>
@@ -21,7 +21,7 @@
                 <li class="list-group-item list-group-item-action">item
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio provident </p>
                     <div>
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-outline-primary btn-sm">
                             Direcciones
                         </button>
                     </div>
@@ -35,6 +35,12 @@
 <style scoped>
 li{
     cursor: pointer;
+}
+h5{
+    font-size: 15px !important;
+}
+p{
+    font-size: 10px !important;
 }
 </style>
 
