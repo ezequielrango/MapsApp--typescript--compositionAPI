@@ -11,10 +11,11 @@ export default defineComponent({
         const mapElement = ref<HTMLDivElement>();
         const { userLocation, isUserlocationReady } = usePlacesStore()
        
-        const initMap = () => {
+        const initMap = async () => {
             if ( !mapElement.value ) throw new Error('Div Element no exits');
             if ( !userLocation.value ) throw new Error('user location no existe');
       
+            await Promise.all
       
             const map = new mapboxgl.Map({
                 container: mapElement.value, // container ID
@@ -22,7 +23,19 @@ export default defineComponent({
                 center: userLocation.value, // starting position [lng, lat]
                 zoom: 15, // starting zoom
                 });
-        }
+
+            const myLocationPopUp= new mapboxgl.Popup()
+                .setLngLat(userLocation.value)
+                .setHTML(`
+                    <p>Rosario</p>
+                    <p>${userLocation.value}</p>
+                `)
+            
+            const myLocationMarker = new mapboxgl.Marker()
+            .setLngLat(userLocation.value)
+            .setPopup(myLocationPopUp)
+            .addTo(map)
+        } 
 
         onMounted(() => {
             if(isUserlocationReady.value) 
@@ -34,6 +47,8 @@ export default defineComponent({
             if(isUserlocationReady) 
             return initMap();
             })
+
+
         return{
 
             isUserlocationReady,
