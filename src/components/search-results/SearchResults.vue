@@ -18,7 +18,10 @@
                     
                 <h3>{{ place.place_name}}</h3>
                     <div>
-                        <button class="btn btn-outline-primary btn-sm">
+                        <button 
+                            class="btn btn-outline-primary btn-sm"
+                            :class="(place.id === activePlace) ? 'btn btn-outline-light' : 'btn btn-outline-primary'"
+                            >
                             Direcciones
                         </button>
                     </div>
