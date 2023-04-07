@@ -1,8 +1,9 @@
-import { Feature } from "@/interfaces/places"
-import { StateInterface } from "@/store"
-import mapboxgl from "mapbox-gl"
-import { computed } from "vue"
-import { useStore } from "vuex"
+import { Feature } from "@/interfaces/places";
+import { StateInterface } from "@/store";
+import mapboxgl from "mapbox-gl";
+import { computed } from "vue";
+import { useStore } from "vuex";
+import  { LngLat } from '@/store/map/actions';
 
 export const useMapStore = () =>{
 
@@ -15,7 +16,9 @@ export const useMapStore = () =>{
         isMapReady: computed(() => store.getters['map/isMapReady']),
 
         setMap: (map: mapboxgl.Map) => store.commit('map/setMap', map),
-        setPlaceMarkers: ( places: Feature[]) => store.commit('map/setPlaceMarkers', places)
+        setPlaceMarkers: ( places: Feature[]) => store.commit('map/setPlaceMarkers', places),
+    
+        getRouteBetweenPoints: ( start: LngLat, end: LngLat ) => store.dispatch('map/getRouteBetweenPoints', { start, end } )
     }
 }
 
