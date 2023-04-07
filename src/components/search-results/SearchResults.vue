@@ -36,7 +36,7 @@
 li{
     cursor: pointer;
 }
-h5{
+h5,h3{
     font-size: 15px !important;
 }
 p{
