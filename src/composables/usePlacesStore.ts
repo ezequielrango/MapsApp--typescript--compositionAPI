@@ -21,7 +21,7 @@ export const usePlacesStore = () => {
         //getters
         isUserlocationReady: computed<boolean>(() => store.getters['places/isUserlocationReady']),
     
-        searchPlacesByTerm: ( query: '') => store.dispatch('places/searchPlacesByTerm',query)
+        searchPlacesByTerm: ( query = '' ) => store.dispatch('places/searchPlacesByTerm', query ),
     
     }
 }
